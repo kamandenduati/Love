@@ -1,0 +1,115 @@
+{
+  "name": "A Special Valentine's Message ✈️💜",
+  "short_name": "My Valentine",
+  "description": "A special Valentine's Day message for that special someone who commands the skies",
+  "start_url": "index.html",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "fullscreen", "minimal-ui"],
+  "background_color": "#667eea",
+  "theme_color": "#ff1493",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/maskable-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/maskable-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start the Journey",
+      "short_name": "Start",
+      "description": "Begin the Valentine's message",
+      "url": "index.html",
+      "icons": [{ "src": "icons/shortcut-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "The Big Question",
+      "short_name": "Question",
+      "description": "Skip to the Valentine's question",
+      "url": "index.html#question",
+      "icons": [{ "src": "icons/question-icon.png", "sizes": "96x96" }]
+    }
+  ],
+  "categories": ["romance", "entertainment", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Opening message with stars and hearts"
+    },
+    {
+      "src": "screenshots/screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "The Valentine's question with pretty please"
+    }
+  ],
+  "features": [
+    "Background music",
+    "Floating hearts animation",
+    "Flying planes",
+    "Teddy bears",
+    "Fireworks celebration"
+  ],
+  "prefer_related_applications": false
+}

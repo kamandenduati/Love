@@ -1,0 +1,1221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Special Message For You ✈️💜</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="My Valentine" />
+    <meta name="theme-color" content="#ff1493" />
+    <meta name="msapplication-TileColor" content="#ff1493" />
+    <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="My Valentine" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- iOS Icons -->
+    <link
+      rel="apple-touch-icon"
+      href="icons/apple-icon-57x57.png"
+      sizes="57x57"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="icons/apple-icon-60x60.png"
+      sizes="60x60"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="icons/apple-icon-72x72.png"
+      sizes="72x72"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="icons/apple-icon-76x76.png"
+      sizes="76x76"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="icons/apple-icon-114x114.png"
+      sizes="114x114"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="icons/apple-icon-120x120.png"
+      sizes="120x120"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="icons/apple-icon-144x144.png"
+      sizes="144x144"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="icons/apple-icon-152x152.png"
+      sizes="152x152"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="icons/apple-icon-180x180.png"
+      sizes="180x180"
+    />
+
+    <!-- Favicon for older browsers -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="icons/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="icons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="icons/android-icon-192x192.png"
+    />
+
+    <!-- Windows Tile -->
+    <meta name="msapplication-config" content="browserconfig.xml" />
+
+    <!-- Social Media Meta Tags -->
+    <meta
+      property="og:title"
+      content="A Special Valentine's Message For You ✈️💜"
+    />
+    <meta
+      property="og:description"
+      content="A magical Valentine's Day experience with flying planes, floating hearts, and a special question just for you!"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="icons/social-preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://yourdomain.com/valentine" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="A Special Valentine's Message For You ✈️💜"
+    />
+    <meta
+      name="twitter:description"
+      content="A magical Valentine's Day experience with flying planes, floating hearts, and a special question just for you!"
+    />
+    <meta name="twitter:image" content="icons/social-preview.jpg" />
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop autoplay>
+      <source src="Bien-Chikwere-Official-Audio-Bie(1).mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Additional PWA Service Worker Registration -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("service-worker.js").then(
+            function (registration) {
+              console.log(
+                "Service Worker registered with scope:",
+                registration.scope,
+              );
+            },
+            function (err) {
+              console.log("Service Worker registration failed:", err);
+            },
+          );
+        });
+      }
+    </script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Quicksand", sans-serif;
+        overflow-x: hidden;
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f093fb 100%
+        );
+        min-height: 100vh;
+        position: relative;
+        transition: background 0.5s ease;
+      }
+
+      body.celebration-mode {
+        background: linear-gradient(
+          135deg,
+          #1a1a2e 0%,
+          #16213e 50%,
+          #0f3460 100%
+        );
+      }
+
+      /* Starry background */
+      .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle 3s infinite;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* Floating hearts */
+      .heart {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background: #ff1493;
+        transform: rotate(45deg);
+        animation: float 6s infinite;
+        opacity: 0.6;
+        z-index: 1;
+      }
+
+      .heart:before,
+      .heart:after {
+        content: "";
+        width: 20px;
+        height: 20px;
+        background: #ff1493;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      .heart:before {
+        top: -10px;
+        left: 0;
+      }
+
+      .heart:after {
+        top: 0;
+        left: 10px;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(45deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(45deg);
+        }
+      }
+
+      /* Floating hearts emoji background */
+      .hearts-float {
+        position: fixed;
+        font-size: 30px;
+        animation: float-up 4s ease-in-out infinite;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      @keyframes float-up {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) rotate(180deg);
+          opacity: 0;
+        }
+      }
+
+      /* Teddy bears */
+      .teddy-bear {
+        position: fixed;
+        font-size: 40px;
+        z-index: 3;
+        animation: fall linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-100px) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0.8;
+        }
+      }
+
+      /* Flying planes */
+      .plane {
+        position: fixed;
+        font-size: 50px;
+        z-index: 10;
+        animation: flyAcross 15s linear infinite;
+        top: 15%;
+      }
+
+      @keyframes flyAcross {
+        0% {
+          left: -100px;
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-30px);
+        }
+        100% {
+          left: calc(100% + 100px);
+          transform: translateY(0);
+        }
+      }
+
+      /* Main container */
+      .container {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .main-content {
+        max-width: 700px;
+        width: 100%;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        padding: 60px 40px;
+        border-radius: 30px;
+        box-shadow: 0 8px 32px 0 rgba(138, 43, 226, 0.37);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        position: relative;
+      }
+
+      /* Screen transitions */
+      .screen {
+        display: none;
+        animation: fadeIn 0.8s ease-in;
+      }
+
+      .screen.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Emoji styling */
+      .emoji-large {
+        font-size: 80px;
+        margin: 20px 0;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* Text styling */
+      h1 {
+        color: white;
+        font-size: 42px;
+        margin: 20px 0;
+        font-weight: 700;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        line-height: 1.3;
+      }
+
+      h2 {
+        color: #ffe6f0;
+        font-size: 32px;
+        margin: 20px 0;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      p {
+        color: white;
+        font-size: 18px;
+        line-height: 1.8;
+        margin: 15px 0;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      .highlight {
+        color: #ffd700;
+        font-weight: 600;
+      }
+
+      .cute-divider {
+        margin: 30px 0;
+        font-size: 24px;
+        color: #ffb8d2;
+      }
+
+      /* Pretty Please styling */
+      .pretty-please {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(45deg, #ff1493, #ff69b4, #9370db);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 32px;
+        font-weight: bold;
+        animation: prettyBounce 2s infinite;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.5));
+      }
+
+      .pretty-please span {
+        display: inline-block;
+        animation: wave 1.5s ease-in-out infinite;
+      }
+
+      .pretty-please span:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .pretty-please span:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .pretty-please span:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .pretty-please span:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      .pretty-please span:nth-child(5) {
+        animation-delay: 0.4s;
+      }
+      .pretty-please span:nth-child(6) {
+        animation-delay: 0.5s;
+      }
+      .pretty-please span:nth-child(7) {
+        animation-delay: 0.6s;
+      }
+      .pretty-please span:nth-child(8) {
+        animation-delay: 0.7s;
+      }
+      .pretty-please span:nth-child(9) {
+        animation-delay: 0.8s;
+      }
+      .pretty-please span:nth-child(10) {
+        animation-delay: 0.9s;
+      }
+      .pretty-please span:nth-child(11) {
+        animation-delay: 1s;
+      }
+      .pretty-please span:nth-child(12) {
+        animation-delay: 1.1s;
+      }
+      .pretty-please span:nth-child(13) {
+        animation-delay: 1.2s;
+      }
+
+      @keyframes wave {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes prettyBounce {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+      }
+
+      /* Question text */
+      .question-text {
+        font-size: 36px;
+        color: #ffd700;
+        font-weight: 700;
+        margin: 40px 0 30px 0;
+        animation: pulse 2s infinite;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      /* Buttons */
+      .button-container {
+        margin-top: 40px;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      button {
+        background: linear-gradient(135deg, #ff1493, #ff69b4);
+        border: none;
+        color: white;
+        padding: 18px 45px;
+        font-family: "Quicksand", sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+      }
+
+      button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6);
+      }
+
+      button:active {
+        transform: scale(1.05);
+      }
+
+      button.yes-button {
+        background: linear-gradient(135deg, #ff1493, #ff4d88);
+        font-size: 24px;
+        padding: 20px 50px;
+      }
+
+      button.no-button {
+        background: linear-gradient(135deg, #9370db, #ba55d3);
+        font-size: 18px;
+        padding: 15px 35px;
+      }
+
+      button.no-button:hover {
+        transform: scale(0.95);
+        opacity: 0.8;
+      }
+
+      /* Warning text */
+      .warning-text {
+        color: #ffd700;
+        margin-top: 25px;
+        font-size: 16px;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in forwards;
+        font-style: italic;
+      }
+
+      /* Success screen */
+      .success-message {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .heart-big {
+        font-size: 120px;
+        margin: 30px 0;
+        animation: heartbeat 1.5s ease-in-out infinite;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        10%,
+        30% {
+          transform: scale(1.2);
+        }
+        20%,
+        40% {
+          transform: scale(1);
+        }
+      }
+
+      .celebration-content {
+        text-align: center;
+        color: white;
+        max-width: 800px;
+        padding: 40px;
+        margin: 0 auto;
+      }
+
+      .celebration-content h2 {
+        font-size: 72px;
+        margin-bottom: 30px;
+        background: linear-gradient(45deg, #ff1493, #ffd700, #ff69b4, #9370db);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: rainbowText 3s linear infinite;
+      }
+
+      @keyframes rainbowText {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+
+      .celebration-message {
+        font-size: 24px;
+        line-height: 1.8;
+        margin: 30px 0;
+        color: #ffe6f0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .romantic-quote {
+        font-size: 28px;
+        font-style: italic;
+        color: #ffd700;
+        margin: 20px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .firework {
+        position: fixed;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        animation: explode 1s ease-out infinite;
+      }
+
+      @keyframes explode {
+        0% {
+          transform: translate(0, 0);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--x), var(--y));
+          opacity: 0;
+        }
+      }
+
+      .cute-teddy {
+        font-size: 50px;
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+      }
+
+      /* Music Control Button */
+      .music-control {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #ff1493, #ff69b4);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 5px 20px rgba(255, 107, 157, 0.5);
+        transition: all 0.3s ease;
+        z-index: 9999;
+        border: 3px solid white;
+      }
+
+      .music-control:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 30px rgba(255, 107, 157, 0.7);
+      }
+
+      .music-control span {
+        font-size: 28px;
+      }
+
+      /* Hidden class for celebration mode */
+      .hidden {
+        display: none !important;
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .main-content {
+          padding: 40px 25px;
+        }
+
+        h1 {
+          font-size: 32px;
+        }
+
+        h2 {
+          font-size: 26px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+
+        .question-text {
+          font-size: 28px;
+        }
+
+        .pretty-please {
+          font-size: 24px;
+          top: -50px;
+        }
+
+        button {
+          padding: 15px 35px;
+          font-size: 18px;
+        }
+
+        button.yes-button {
+          font-size: 20px;
+          padding: 18px 40px;
+        }
+
+        .music-control {
+          bottom: 20px;
+          right: 20px;
+          width: 50px;
+          height: 50px;
+        }
+
+        .music-control span {
+          font-size: 24px;
+        }
+
+        .celebration-content h2 {
+          font-size: 48px;
+        }
+
+        .celebration-message {
+          font-size: 20px;
+        }
+
+        .romantic-quote {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Floating hearts background -->
+    <div id="floatingHearts"></div>
+    <div id="hearts"></div>
+    <div id="teddyBears"></div>
+    <div id="planes"></div>
+
+    <!-- Music Control Button -->
+    <div class="music-control" id="musicControl" onclick="toggleMusic()">
+      <span id="musicIcon">🎵</span>
+    </div>
+
+    <div class="container">
+      <div class="main-content">
+        <!-- Screen 1: Initial Compliments -->
+        <div id="screen1" class="screen active">
+          <div class="emoji-large">💭</div>
+          <h1>To The Most Beautiful Woman ✨</h1>
+          <div class="cute-divider">✨ ✨ ✨</div>
+          <p>Your smile lights up the sky brighter than any constellation.</p>
+          <p>The way you command the skies with grace and confidence,</p>
+          <p>
+            it captivates me more than any
+            <span class="highlight">sunset ever could.</span>
+          </p>
+          <div class="cute-divider">💫 💫 💫</div>
+          <p>You're not just a pilot, you're a dream taking flight.</p>
+          <p>Every word you speak is poetry, every laugh is music,</p>
+          <p>
+            and your presence makes everything feel
+            <span class="highlight">magical.</span>
+          </p>
+
+          <div class="button-container">
+            <button onclick="goToScreen2()">Tell me more... 💕</button>
+          </div>
+        </div>
+
+        <!-- Screen 2: The Build Up -->
+        <div id="screen2" class="screen">
+          <div class="emoji-large">🦋</div>
+          <h2>Here's the thing...</h2>
+          <p style="margin-top: 25px">
+            Your strength, your beauty, your passion for the skies—
+          </p>
+          <p>everything about you takes my breath away.</p>
+          <p>That little flutter when we talk.</p>
+          <p>The smile I can't help when I see your name.</p>
+          <p>
+            The way our conversations just
+            <span class="highlight">flow effortlessly.</span>
+          </p>
+          <div class="cute-divider">💝 💝 💝</div>
+          <p>
+            <strong
+              >Just like planes soaring through endless purple skies,</strong
+            >
+          </p>
+          <p>You've lifted my heart to heights I've never known.</p>
+
+          <div class="button-container" style="margin-top: 40px">
+            <button onclick="goToScreen3()">I'm listening... 💖</button>
+          </div>
+        </div>
+
+        <!-- Screen 3: The Question -->
+        <div id="screen3" class="screen">
+          <div class="pretty-please">
+            <span>P</span><span>r</span><span>e</span><span>t</span
+            ><span>t</span><span>y</span>
+            <span> </span>
+            <span>P</span><span>l</span><span>e</span><span>a</span
+            ><span>s</span><span>e</span>
+            <span> </span>
+            <span>🧸</span>
+          </div>
+
+          <div class="emoji-large">🌹</div>
+          <h2>So here it goes...</h2>
+          <p style="margin-top: 25px">No more pretending.</p>
+          <p>No more "what ifs."</p>
+          <p>Just honest feelings.</p>
+          <p>You're the destination my heart has been searching for,</p>
+          <p>the co-pilot I want by my side through every adventure.</p>
+
+          <div class="question-text">✈️ Will you be my Valentine? 💜</div>
+
+          <div class="button-container">
+            <button class="yes-button" onclick="showSuccess()">
+              Yes! Let's Fly Together! 💖
+            </button>
+            <button class="no-button" id="noBtn" onclick="handleNo()">
+              Maybe not... 💔
+            </button>
+          </div>
+          <div id="warningText"></div>
+        </div>
+
+        <!-- Screen 4: Success with celebration content -->
+        <div id="screen4" class="screen">
+          <div class="celebration-content">
+            <h2>🎉 A WHOLE NEW WORLD! 🎉</h2>
+            <p class="cute-teddy">🧸💜✈️💕🧸</p>
+
+            <p class="romantic-quote">
+              "Like soaring through starlit skies on wings of love..."
+            </p>
+
+            <p class="celebration-message">
+              Together we'll soar where dreams come true,<br />
+              Through shining, shimmering, splendid views.<br />
+              A wondrous place, just me and you—<br />
+              Our love story is just beginning! ✨
+            </p>
+
+            <p class="romantic-quote">
+              "Nothing can stop us now,<br />
+              Our love is unbreakable..."
+            </p>
+
+            <p class="celebration-message">
+              You and me against the world,<br />
+              Flying higher than we've ever been.<br />
+              This is our moment, our adventure,<br />
+              Forever starts today! 🌟💕
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Background Music with autoplay
+      const bgMusic = document.getElementById("bgMusic");
+      const musicIcon = document.getElementById("musicIcon");
+      let musicPlaying = false;
+
+      // Set volume and try to autoplay immediately
+      bgMusic.volume = 1;
+
+      // Attempt autoplay on page load
+      window.addEventListener("load", () => {
+        bgMusic
+          .play()
+          .then(() => {
+            musicIcon.textContent = "🎵";
+            musicPlaying = true;
+          })
+          .catch((e) => {
+            console.log(
+              "Auto-play prevented by browser, will try on first click",
+            );
+            musicIcon.textContent = "🔇";
+          });
+      });
+
+      // Fallback: Try to play on first user interaction
+      let firstInteraction = true;
+      document.addEventListener(
+        "click",
+        () => {
+          if (firstInteraction && !musicPlaying) {
+            firstInteraction = false;
+            bgMusic
+              .play()
+              .then(() => {
+                musicIcon.textContent = "🎵";
+                musicPlaying = true;
+              })
+              .catch((e) => {
+                console.log("Audio play failed");
+              });
+          }
+        },
+        { once: true },
+      );
+
+      // Toggle music function
+      function toggleMusic() {
+        if (musicPlaying) {
+          bgMusic.pause();
+          musicIcon.textContent = "🔇";
+          musicPlaying = false;
+        } else {
+          bgMusic
+            .play()
+            .then(() => {
+              musicIcon.textContent = "🎵";
+              musicPlaying = true;
+            })
+            .catch((e) => {
+              console.log("Audio play failed:", e);
+            });
+        }
+      }
+
+      // Create stars
+      const starsContainer = document.getElementById("stars");
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
+        star.style.animationDelay = Math.random() * 3 + "s";
+        starsContainer.appendChild(star);
+      }
+
+      // Create floating hearts (emoji style)
+      function createFloatingHearts() {
+        const hearts = ["💕", "💖", "💗", "💝"];
+        setInterval(() => {
+          const heart = document.createElement("div");
+          heart.className = "hearts-float";
+          heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+          heart.style.fontSize = 20 + Math.random() * 20 + "px";
+          document.getElementById("floatingHearts").appendChild(heart);
+
+          setTimeout(() => heart.remove(), 6000);
+        }, 800);
+      }
+
+      // Create CSS hearts
+      const heartsContainer = document.getElementById("hearts");
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.top = Math.random() * 100 + "%";
+        heart.style.animationDelay = Math.random() * 6 + "s";
+        heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+        heartsContainer.appendChild(heart);
+      }
+
+      // Falling teddy bears
+      const teddyBearsContainer = document.getElementById("teddyBears");
+
+      function createTeddyBear() {
+        const teddy = document.createElement("div");
+        teddy.className = "teddy-bear cute-teddy";
+        teddy.textContent = "🧸";
+        teddy.style.left = Math.random() * 100 + "%";
+        teddy.style.animationDuration = Math.random() * 5 + 8 + "s";
+        teddy.style.animationDelay = Math.random() * 5 + "s";
+        teddyBearsContainer.appendChild(teddy);
+
+        setTimeout(() => {
+          teddy.remove();
+        }, 13000);
+      }
+
+      setInterval(createTeddyBear, 800);
+      for (let i = 0; i < 10; i++) {
+        setTimeout(createTeddyBear, i * 800);
+      }
+
+      // Extra teddy bears for celebration
+      function createFallingTeddies() {
+        const teddyEmojis = ["🧸", "🐻", "💕", "💖", "💗", "🌹"];
+        for (let i = 0; i < 25; i++) {
+          setTimeout(() => {
+            const teddy = document.createElement("div");
+            teddy.className = "teddy-bear";
+            teddy.textContent =
+              teddyEmojis[Math.floor(Math.random() * teddyEmojis.length)];
+            teddy.style.left = Math.random() * 100 + "vw";
+            teddy.style.animationDelay = Math.random() * 0.5 + "s";
+            teddy.style.animationDuration = 4 + Math.random() * 2 + "s";
+            teddy.style.fontSize = "40px";
+            document.body.appendChild(teddy);
+
+            setTimeout(() => teddy.remove(), 7000);
+          }, i * 150);
+        }
+      }
+
+      // Flying planes
+      const planesContainer = document.getElementById("planes");
+      const planeTypes = ["✈️", "🛩️"];
+
+      function createPlane() {
+        const plane = document.createElement("div");
+        plane.className = "plane";
+        plane.textContent =
+          planeTypes[Math.floor(Math.random() * planeTypes.length)];
+        plane.style.animationDuration = Math.random() * 5 + 10 + "s";
+        planesContainer.appendChild(plane);
+
+        setTimeout(() => {
+          plane.remove();
+        }, 15000);
+      }
+
+      setInterval(createPlane, 4000);
+      createPlane();
+
+      // Screen navigation
+      function goToScreen2() {
+        document.getElementById("screen1").classList.remove("active");
+        document.getElementById("screen2").classList.add("active");
+      }
+
+      function goToScreen3() {
+        document.getElementById("screen2").classList.remove("active");
+        document.getElementById("screen3").classList.add("active");
+        createFallingTeddies();
+      }
+
+      // No button behavior
+      let noClickCount = 0;
+      function handleNo() {
+        const noBtn = document.getElementById("noBtn");
+        const warningText = document.getElementById("warningText");
+        noClickCount++;
+
+        if (noClickCount === 1) {
+          warningText.innerHTML =
+            '<p class="warning-text">Wait... are you sure? 🥺</p>';
+        } else if (noClickCount === 2) {
+          const maxX = window.innerWidth - noBtn.offsetWidth - 40;
+          const maxY = window.innerHeight - noBtn.offsetHeight - 40;
+          const newX = Math.random() * maxX;
+          const newY = Math.random() * maxY;
+          noBtn.style.position = "fixed";
+          noBtn.style.left = newX + "px";
+          noBtn.style.top = newY + "px";
+          noBtn.style.transition = "all 0.3s ease";
+          warningText.innerHTML =
+            '<p class="warning-text">The button is trying to escape! 😅<br>I think even it knows we\'re meant to be together 💕</p>';
+        } else {
+          const maxX = window.innerWidth - noBtn.offsetWidth - 40;
+          const maxY = window.innerHeight - noBtn.offsetHeight - 40;
+          const newX = Math.random() * maxX;
+          const newY = Math.random() * maxY;
+          noBtn.style.left = newX + "px";
+          noBtn.style.top = newY + "px";
+          warningText.innerHTML =
+            '<p class="warning-text">Come on... you know you want to say yes 🥰<br>Just click the pink button. You know we\'re perfect together! 💖</p>';
+        }
+      }
+
+      // Success celebration
+      function showSuccess() {
+        // Hide the question screen
+        document.getElementById("screen3").classList.remove("active");
+
+        // Show success screen
+        document.getElementById("screen4").classList.add("active");
+
+        // Change body background to celebration mode
+        document.body.classList.add("celebration-mode");
+
+        // Add more stars to existing container
+        for (let i = 0; i < 200; i++) {
+          const star = document.createElement("div");
+          star.className = "star";
+          star.style.left = Math.random() * 100 + "%";
+          star.style.top = Math.random() * 100 + "%";
+          star.style.animationDelay = Math.random() * 3 + "s";
+          starsContainer.appendChild(star);
+        }
+
+        // Create fireworks (no confetti)
+        for (let i = 0; i < 50; i++) {
+          setTimeout(() => {
+            createFirework();
+          }, i * 100);
+        }
+
+        // Extra teddy bears
+        createFallingTeddies();
+      }
+
+      function createFirework() {
+        const colors = [
+          "#ff1493",
+          "#ffd700",
+          "#ff69b4",
+          "#9370db",
+          "#00ff00",
+          "#00bfff",
+        ];
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight * 0.5;
+
+        for (let i = 0; i < 30; i++) {
+          const firework = document.createElement("div");
+          firework.className = "firework";
+          firework.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+          firework.style.left = x + "px";
+          firework.style.top = y + "px";
+
+          const angle = (Math.PI * 2 * i) / 30;
+          const velocity = Math.random() * 100 + 50;
+          firework.style.setProperty("--x", Math.cos(angle) * velocity + "px");
+          firework.style.setProperty("--y", Math.sin(angle) * velocity + "px");
+
+          document.body.appendChild(firework);
+
+          setTimeout(() => {
+            firework.remove();
+          }, 1000);
+        }
+      }
+
+      // Start floating hearts on load
+      createFloatingHearts();
+
+      // PWA install prompt
+      let deferredPrompt;
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Optional: Show an install button
+        const installButton = document.createElement("button");
+        installButton.textContent = "📱 Install App";
+        installButton.style.position = "fixed";
+        installButton.style.bottom = "100px";
+        installButton.style.right = "30px";
+        installButton.style.zIndex = "9999";
+        installButton.style.padding = "10px 20px";
+        installButton.style.background =
+          "linear-gradient(135deg, #ff1493, #ff69b4)";
+        installButton.style.border = "none";
+        installButton.style.color = "white";
+        installButton.style.borderRadius = "50px";
+        installButton.style.fontSize = "16px";
+        installButton.style.cursor = "pointer";
+
+        installButton.addEventListener("click", async () => {
+          if (!deferredPrompt) return;
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          console.log(`User response to the install prompt: ${outcome}`);
+          deferredPrompt = null;
+          installButton.remove();
+        });
+
+        document.body.appendChild(installButton);
+      });
+    </script>
+  </body>
+</html>
